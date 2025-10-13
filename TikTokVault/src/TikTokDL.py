@@ -1,18 +1,22 @@
 """
 TikTok Downloader - Main Script
 Downloads TikTok videos from URLs listed in data directory files
-Saves downloaded videos to outputs directory
+Saves downloaded videos to outputs directory with database integration
 """
 
+import json
+import logging
 import os
 import sys
-import json
-from pathlib import Path
+import uuid
 from datetime import datetime
-import yt_dlp
-from tqdm import tqdm
+from pathlib import Path
+
 import colorama
-from colorama import Fore, Back, Style
+import yt_dlp
+from colorama import Back, Fore, Style
+from database import TikTokDatabase
+from tqdm import tqdm
 
 # Initialize colorama for cross-platform colored output
 colorama.init(autoreset=True)
@@ -35,6 +39,19 @@ class TikTokDownloader:
         
         for dir_path in [self.videos_dir, self.logs_dir, self.metadata_dir]:
             dir_path.mkdir(exist_ok=True)
+        
+        # Initialize database
+        self.db = TikTokDatabase()
+        
+        # Setup logging
+        logging.basicConfig(
+            level=logging.INFO,
+            format='%(asctime)s - %(levelname)s - %(message)s',
+            handlers=[
+                logging.FileHandler(self.logs_dir / 'app.log'),
+                logging.StreamHandler()
+            ]
+        )
     
     def load_urls_from_file(self, filename="tiktok_urls.txt"):
         """Load TikTok URLs from a file in the data directory"""
@@ -78,62 +95,77 @@ class TikTokDownloader:
             'extract_flat': False,
         }
     
-    def download_videos(self, urls):
-        """Download TikTok videos from list of URLs"""
+    def download_videos(self, urls, source_file=None):
+        """Download TikTok videos from list of URLs with database integration"""
         if not urls:
             print(f"{Fore.RED}❌ No URLs to download!")
             return [], []
-        
+
         print(f"{Fore.CYAN}🚀 Starting download of {len(urls)} videos...")
         print(f"{Fore.CYAN}📁 Videos will be saved to: {self.videos_dir}")
-        
+        print(f"{Fore.CYAN}🗄️  Metadata will be stored in database")
+
+        # Create session for tracking
+        session_id = str(uuid.uuid4())
+        self.db.start_download_session(session_id, len(urls), source_file)
+
         successful_downloads = []
         failed_downloads = []
-        download_log = []
-        
+
         # Setup yt-dlp
         ydl_opts = self.setup_ydl_options()
-        
+
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             # Progress bar for overall progress
             with tqdm(urls, desc="Downloading videos", unit="video") as pbar:
                 for i, url in enumerate(pbar):
                     try:
                         pbar.set_description(f"Downloading video {i+1}/{len(urls)}")
-                        
+
                         # Extract info first to get metadata
                         info = ydl.extract_info(url, download=False)
                         title = info.get('title', 'Unknown')
                         uploader = info.get('uploader', 'Unknown')
-                        
+
                         pbar.set_postfix_str(f"'{title[:30]}...' by {uploader}")
+
+                        # Download the video and get final info
+                        final_info = ydl.extract_info(url, download=True)
                         
-                        # Download the video
-                        ydl.download([url])
-                        
+                        # Add video to database
+                        self.db.add_video(final_info)
+
                         successful_downloads.append({
                             'url': url,
                             'title': title,
                             'uploader': uploader,
+                            'video_id': final_info.get('id', ''),
                             'timestamp': datetime.now().isoformat()
                         })
-                        
+
                         print(f"\n{Fore.GREEN}✅ Downloaded: {title} by {uploader}")
-                        
+
                     except Exception as e:
                         error_msg = str(e)
+                        
+                        # Add failed download to database
+                        self.db.add_failed_download(url, error_msg)
+                        
                         failed_downloads.append({
                             'url': url,
                             'error': error_msg,
                             'timestamp': datetime.now().isoformat()
                         })
-                        
+
                         print(f"\n{Fore.RED}❌ Failed to download {url}")
                         print(f"{Fore.RED}   Error: {error_msg}")
-        
+
+        # End session
+        self.db.end_download_session(session_id, len(successful_downloads), len(failed_downloads))
+
         # Save download log
         self.save_download_log(successful_downloads, failed_downloads)
-        
+
         return successful_downloads, failed_downloads
     
     def save_download_log(self, successful, failed):
@@ -229,7 +261,7 @@ class TikTokDownloader:
         # Load URLs and download
         urls = self.load_urls_from_file(selected_file.name)
         if urls:
-            successful, failed = self.download_videos(urls)
+            successful, failed = self.download_videos(urls, selected_file.name)
             self.print_summary(successful, failed)
     
     def run_batch(self, filename="tiktok_urls.txt"):
@@ -240,7 +272,7 @@ class TikTokDownloader:
         
         urls = self.load_urls_from_file(filename)
         if urls:
-            successful, failed = self.download_videos(urls)
+            successful, failed = self.download_videos(urls, filename)
             self.print_summary(successful, failed)
         else:
             print(f"{Fore.RED}❌ No URLs found or file doesn't exist")
@@ -266,4 +298,5 @@ if __name__ == "__main__":
         sys.exit(0)
     except Exception as e:
         print(f"\n{Fore.RED}💥 Unexpected error: {str(e)}")
+        sys.exit(1)
         sys.exit(1)

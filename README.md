@@ -1,223 +1,305 @@
 # TikTok Downloader 🎬
 
-A powerful and easy-to-use TikTok video downloader that can process multiple URLs from text files and organize downloads efficiently.
+Un descargador de videos de TikTok potente y fácil de usar con almacenamiento de base de datos integrado que puede procesar múltiples URLs desde archivos de texto y organizar descargas de manera eficiente.
 
-## Features ✨
+## Características ✨
 
-- **Batch Download**: Download multiple TikTok videos from a list of URLs
-- **Organized Output**: Automatically organizes videos, metadata, and logs
-- **Progress Tracking**: Real-time progress bars and colored output
-- **Error Handling**: Continues downloading even if some videos fail
-- **Metadata Extraction**: Saves video information and thumbnails
-- **Flexible Input**: Load URLs from any .txt file in the data directory
-- **Detailed Logging**: Comprehensive download logs with timestamps
+- **Descarga en Lotes**: Descarga múltiples videos de TikTok desde una lista de URLs
+- **Integración con Base de Datos**: Base de datos SQLite para almacenar metadatos de videos (título, creador, vistas, etc.)
+- **Salida Organizada**: Organiza automáticamente videos, metadatos y registros
+- **Seguimiento de Progreso**: Barras de progreso en tiempo real y salida colorizada
+- **Manejo de Errores**: Continúa descargando incluso si algunos videos fallan
+- **Extracción de Metadatos**: Guarda información de videos y miniaturas
+- **Entrada Flexible**: Carga URLs desde cualquier archivo .txt en el directorio de datos
+- **Registro Detallado**: Registros de descarga comprensivos con marcas de tiempo
+- **Visor de Base de Datos**: Busca, filtra y analiza videos descargados
+- **Estadísticas**: Ve estadísticas de descarga y análisis de creadores
 
-## Project Structure 📁
+## Estructura del Proyecto 📁
 
 ```
 TikTok_Downloader/
 ├── TikTokVault/
-│   ├── data/                    # Input files (URL lists)
-│   │   └── tiktok_urls.txt     # Default URL file
-│   ├── outputs/                 # Downloaded content
-│   │   ├── videos/             # Video files (.mp4, .mov, etc.)
-│   │   ├── logs/               # Download logs (.json)
-│   │   └── metadata/           # Video info & thumbnails
+│   ├── data/                    # Archivos de entrada (listas de URLs)
+│   │   └── tiktok_urls.txt     # Archivo de URLs por defecto
+│   ├── outputs/                 # Contenido descargado
+│   │   ├── videos/             # Archivos de video (.mp4, .mov, etc.)
+│   │   ├── logs/               # Registros de descarga (.json)
+│   │   ├── metadata/           # Info de videos y miniaturas
+│   │   └── tiktok_videos.db    # Base de datos SQLite
 │   └── src/
-│       └── TikTokDL.py         # Main downloader script
+│       ├── TikTokDL.py         # Script principal del descargador
+│       ├── database.py         # Gestor de base de datos
+│       └── db_viewer.py        # Interfaz del visor de base de datos
 ├── configs/
-│   └── config.ini              # Configuration settings
-├── requirements.txt            # Python dependencies
-├── run_downloader.py          # Quick run script
-└── README.md                  # This file
+│   └── config.ini              # Configuraciones
+├── requirements.txt            # Dependencias de Python
+├── run_downloader.py          # Punto de entrada principal
+└── README.md                  # Este archivo
 ```
 
-## Installation 🚀
+## Instalación 🚀
 
-1. **Clone the repository:**
+1. **Clonar el repositorio:**
    ```bash
    git clone https://github.com/YourUsername/TikTok_Downloader.git
    cd TikTok_Downloader
    ```
 
-2. **Install Python dependencies:**
+2. **Instalar dependencias de Python:**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Verify installation:**
+3. **Verificar instalación:**
    ```bash
    python run_downloader.py
    ```
 
-## Usage 📖
+## Uso 📖
 
-### Method 1: Interactive Mode (Recommended for beginners)
+### Descargar Videos
 
-1. **Add TikTok URLs to a file:**
-   - Create or edit `TikTokVault/data/tiktok_urls.txt`
-   - Add one TikTok URL per line:
+#### Método 1: Modo Interactivo (Recomendado)
+
+1. **Agregar URLs de TikTok a un archivo:**
+   - Crear o editar `TikTokVault/data/tiktok_urls.txt`
+   - Agregar una URL de TikTok por línea:
    ```
    https://www.tiktok.com/@username/video/1234567890123456789
    https://www.tiktok.com/@username/video/9876543210987654321
-   # You can add comments with #
+   # Puedes agregar comentarios con #
    ```
 
-2. **Run the downloader:**
+2. **Ejecutar el descargador:**
    ```bash
    python run_downloader.py
    ```
 
-3. **Select your URL file and watch the magic happen! ✨**
+3. **¡Selecciona tu archivo de URLs y observa la magia! ✨**
 
-### Method 2: Batch Mode (For advanced users)
+#### Método 2: Modo por Lotes
 
 ```bash
-# Use default file (tiktok_urls.txt)
+# Usar archivo por defecto (tiktok_urls.txt)
 python run_downloader.py
 
-# Use specific file
-python run_downloader.py my_custom_urls.txt
+# Usar archivo específico
+python run_downloader.py mis_urls_personalizadas.txt
 ```
 
-### Method 3: Direct Script Execution
+### Gestión de Base de Datos 🗄️
 
+#### Visor Interactivo de Base de Datos
 ```bash
-cd TikTokVault/src
-python TikTokDL.py
+python run_downloader.py db
 ```
 
-## URL File Format 📝
+#### Operaciones de Base de Datos por Línea de Comandos
+```bash
+python run_downloader.py db stats
 
-Create `.txt` files in the `TikTokVault/data/` directory:
+# Mostrar videos recientes (por defecto: 10)
+python run_downloader.py db recent
+python run_downloader.py db recent 20
+
+# Buscar videos
+python run_downloader.py db search "baile"
+python run_downloader.py db search "gracioso" creator
+
+# Mostrar todos los videos de un creador
+python run_downloader.py db creator nombre_usuario
+
+# Mostrar información detallada del video
+python run_downloader.py db video ID_DEL_VIDEO
+```
+
+## Características de la Base de Datos 🗄️
+
+La base de datos SQLite integrada almacena automáticamente metadatos completos para todos los videos descargados:
+
+### Información Almacenada
+- **Detalles del Video**: Título, descripción, duración, fecha de subida
+- **Info del Creador**: Nombre de usuario, nombre para mostrar
+- **Estadísticas de Engagement**: Vistas, likes, comentarios, compartidas
+- **Info de Archivo**: Ruta del archivo, tamaño, calidad del formato
+- **Info de Descarga**: Fecha de descarga, seguimiento de sesiones
+- **Tags/Hashtags**: Extraídos de los metadatos del video
+
+### Beneficios de la Base de Datos
+- **Buscar y Filtrar**: Encuentra videos por título, creador o contenido
+- **Análisis**: Ve estadísticas sobre descargas y creadores
+- **Seguimiento de Historial**: Ve qué has descargado y cuándo
+- **Prevención de Duplicados**: Evita volver a descargar el mismo video
+- **Seguimiento de Lotes**: Monitorea las tasas de éxito de sesiones de descarga
+
+### Comandos Disponibles
+- Ver estadísticas y creadores top
+- Buscar videos por varios criterios
+- Navegar descargas recientes
+- Analizar contenido de creadores
+- Obtener información detallada de videos
+
+## Formato de Archivo de URLs 📝
+
+Crea archivos `.txt` en el directorio `TikTokVault/data/`:
 
 ```txt
-# My TikTok Collection
-# Lines starting with # are comments
+# Mi Colección de TikTok
+# Las líneas que empiezan con # son comentarios
 
-https://www.tiktok.com/@user1/video/1234567890123456789
-https://www.tiktok.com/@user2/video/9876543210987654321
+https://www.tiktok.com/@usuario1/video/1234567890123456789
+https://www.tiktok.com/@usuario2/video/9876543210987654321
 
-# You can organize URLs with comments
-# Funny videos:
-https://www.tiktok.com/@comedian/video/1111111111111111111
+# Puedes organizar URLs con comentarios
+# Videos graciosos:
+https://www.tiktok.com/@comediante/video/1111111111111111111
 
-# Tutorial videos:
-https://www.tiktok.com/@teacher/video/2222222222222222222
+# Videos tutoriales:
+https://www.tiktok.com/@maestro/video/2222222222222222222
 ```
 
-## Configuration ⚙️
+## Configuración ⚙️
 
-Edit `configs/config.ini` to customize:
+Edita `configs/config.ini` para personalizar:
 
-- **Video Quality**: Set maximum download quality
-- **File Organization**: Choose naming patterns
-- **Download Behavior**: Set retries, delays, error handling
-- **Output Options**: Enable/disable thumbnails, metadata
+- **Calidad de Video**: Establece la calidad máxima de descarga
+- **Organización de Archivos**: Elige patrones de nomenclatura
+- **Comportamiento de Descarga**: Establece reintentos, retrasos, manejo de errores
+- **Opciones de Salida**: Habilita/deshabilita miniaturas, metadatos
 
-## Output Files 📂
+## Archivos de Salida 📂
 
-After downloading, you'll find:
+Después de descargar, encontrarás:
 
-### Videos Directory (`TikTokVault/outputs/videos/`)
-- **Video files**: `username_video-title_video-id.mp4`
-- **Thumbnails**: `username_video-title_video-id.jpg`
+### Directorio de Videos (`TikTokVault/outputs/videos/`)
+- **Archivos de video**: `usuario_titulo-video_id-video.mp4`
+- **Miniaturas**: `usuario_titulo-video_id-video.jpg`
 
-### Logs Directory (`TikTokVault/outputs/logs/`)
-- **Download logs**: `download_log_YYYYMMDD_HHMMSS.json`
-- Contains success/failure statistics and detailed results
+### Directorio de Registros (`TikTokVault/outputs/logs/`)
+- **Registros de descarga**: `download_log_AAAAMMDD_HHMMSS.json`
+- Contiene estadísticas de éxito/fallo y resultados detallados
 
-### Metadata Directory (`TikTokVault/outputs/metadata/`)
-- **Video info**: `.info.json` files with complete video metadata
-- **Descriptions**: Video titles, descriptions, upload dates
+### Directorio de Metadatos (`TikTokVault/outputs/metadata/`)
+- **Info de video**: archivos `.info.json` con metadatos completos del video
+- **Descripciones**: Títulos de videos, descripciones, fechas de subida
 
-## Example Output 🎯
+## Ejemplos 🎯
 
+### Ejemplo de Descarga
 ```
-🚀 Starting download of 5 videos...
-📁 Videos will be saved to: TikTokVault/outputs/videos
+🚀 Iniciando descarga de 5 videos...
+📁 Los videos se guardarán en: TikTokVault/outputs/videos
+🗄️ Los metadatos se almacenarán en la base de datos
 
-Downloading videos: 60%|██████    | 3/5 [00:45<00:30, 15.2s/video]
-✅ Downloaded: Amazing Dance Video by @dancer123
+Descargando videos: 60%|██████    | 3/5 [00:45<00:30, 15.2s/video]
+✅ Descargado: Video de Baile Increíble por @bailarin123
 
 ==================================================
-📊 DOWNLOAD SUMMARY
+📊 RESUMEN DE DESCARGA
 ==================================================
-✅ Successful: 4/5
-❌ Failed: 1/5  
-📈 Success Rate: 80.0%
+✅ Exitosos: 4/5
+❌ Fallidos: 1/5  
+📈 Tasa de Éxito: 80.0%
 
-🎉 Successfully downloaded videos:
-  • Amazing Dance Video... by @dancer123
-  • Cooking Tutorial... by @chef_master
-  • Cat Compilation... by @funny_pets
-  • DIY Project... by @crafty_creator
+🎉 Videos descargados exitosamente:
+  • Video de Baile Increíble... por @bailarin123
+  • Tutorial de Cocina... por @chef_maestro
+  • Compilación de Gatos... por @mascotas_graciosas
+  • Proyecto DIY... por @creador_manualidades
 ```
 
-## Troubleshooting 🔧
+### Ejemplos de Base de Datos
 
-### Common Issues:
+**Ver Estadísticas:**
+```bash
+python run_downloader.py db stats
+```
+Salida:
+```
+📊 ESTADÍSTICAS DE BASE DE DATOS
+📹 Total de Videos: 25
+👤 Creadores Únicos: 8  
+💾 Tamaño Total: 487.3 MB
+🏆 MEJORES CREADORES:
+  1. maestro_cocina: 6 videos
+  2. bailarin123: 4 videos
+```
+
+**Buscar videos de cocina:**
+```bash
+python run_downloader.py db search "receta"
+```
+
+**Ver todos los videos de un creador:**
+```bash
+python run_downloader.py db creator maestro_cocina
+```
+
+## Solución de Problemas 🔧
+
+### Problemas Comunes:
 
 1. **"No module named 'yt_dlp'"**
    ```bash
    pip install -r requirements.txt
    ```
 
-2. **"No URLs found"**
-   - Check that your `.txt` file is in `TikTokVault/data/`
-   - Ensure URLs contain 'tiktok.com'
-   - Remove empty lines or fix formatting
+2. **"No se encontraron URLs"**
+   - Verifica que tu archivo `.txt` esté en `TikTokVault/data/`
+   - Asegúrate de que las URLs contengan 'tiktok.com'
+   - Elimina líneas vacías o corrige el formato
 
-3. **Downloads failing**
-   - Some TikTok videos may be private or deleted
-   - Check your internet connection
-   - Try updating yt-dlp: `pip install --upgrade yt-dlp`
+3. **Descargas fallando**
+   - Algunos videos de TikTok pueden ser privados o estar eliminados
+   - Verifica tu conexión a internet
+   - Intenta actualizar yt-dlp: `pip install --upgrade yt-dlp`
 
-4. **Permission errors**
-   - Run as administrator (Windows) or use `sudo` (Linux/Mac)
-   - Check folder permissions
+4. **Errores de permisos**
+   - Ejecuta como administrador (Windows) o usa `sudo` (Linux/Mac)
+   - Verifica los permisos de las carpetas
 
-### Getting Help:
+### Obtener Ayuda:
 
-- Check the log files in `TikTokVault/outputs/logs/`
-- Enable detailed logging by editing the script
-- Create an issue on GitHub with error details
+- Revisa los archivos de registro en `TikTokVault/outputs/logs/`
+- Habilita registro detallado editando el script
+- Crea un issue en GitHub con detalles del error
 
-## Contributing 🤝
+## Contribuir 🤝
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin feature-name`
-5. Submit a pull request
+1. Hace fork del repositorio
+2. Crea una rama de funcionalidad: `git checkout -b nombre-funcionalidad`
+3. Commit tus cambios: `git commit -am 'Agregar alguna funcionalidad'`
+4. Push a la rama: `git push origin nombre-funcionalidad`
+5. Envía un pull request
 
-## Legal Notice ⚖️
+## Aviso Legal ⚖️
 
-- **Respect Copyright**: Only download videos you have permission to download
-- **Personal Use**: This tool is intended for personal use and educational purposes
-- **Terms of Service**: Comply with TikTok's Terms of Service
-- **Fair Use**: Respect content creators' rights
+- **Respeta los Derechos de Autor**: Solo descarga videos para los que tengas permiso
+- **Uso Personal**: Esta herramienta está destinada para uso personal y educativo
+- **Términos de Servicio**: Cumple con los Términos de Servicio de TikTok
+- **Uso Justo**: Respeta los derechos de los creadores de contenido
 
-## Dependencies 📦
+## Dependencias 📦
 
-- `yt-dlp`: Core video downloading functionality
-- `tqdm`: Progress bars
-- `colorama`: Cross-platform colored output
-- `requests`: HTTP requests
-- `pathlib`: File system operations
+- `yt-dlp`: Funcionalidad principal de descarga de videos
+- `tqdm`: Barras de progreso
+- `colorama`: Salida colorizada multiplataforma
+- `requests`: Peticiones HTTP
+- `pathlib`: Operaciones del sistema de archivos
 
-## License 📄
+## Licencia 📄
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Este proyecto está licenciado bajo la Licencia MIT - ve el archivo [LICENSE](LICENSE) para detalles.
 
-## Acknowledgments 👏
+## Agradecimientos 👏
 
-- [yt-dlp](https://github.com/yt-dlp/yt-dlp) - The amazing video downloader library
-- TikTok content creators - For the amazing content
-- Python community - For the excellent tools and libraries
+- [yt-dlp](https://github.com/yt-dlp/yt-dlp) - La increíble librería descargadora de videos
+- Creadores de contenido de TikTok - Por el contenido increíble
+- Comunidad de Python - Por las excelentes herramientas y librerías
 
 ---
 
-**Happy Downloading! 🎉**
+**¡Felices Descargas! 🎉**
 
-*Made with ❤️ for the TikTok community*
+*Hecho con ❤️ para la comunidad de TikTok*

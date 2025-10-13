@@ -1,0 +1,4 @@
+# TikTok URLs to download
+# Add one URL per line
+# Example:
+# https://www.tiktok.com/@username/video/1234567890123456789

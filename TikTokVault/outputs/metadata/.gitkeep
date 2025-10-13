@@ -1,0 +1,9 @@
+# This directory contains video metadata and thumbnails
+# Automatically generated when downloading videos
+
+# Files include:
+# - video_title.info.json (video metadata)
+# - video_title.jpg (thumbnail images)
+# - video_title.description.txt (video descriptions)
+
+# Note: This .gitkeep file ensures the directory is tracked by Git

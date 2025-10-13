@@ -63,8 +63,11 @@ TikTok_Downloader/
 #### Método 1: Modo Interactivo (Recomendado)
 
 1. **Agregar URLs de TikTok a un archivo:**
-   - Crear o editar `TikTokVault/data/tiktok_urls.txt`
-   - Agregar una URL de TikTok por línea:
+   - Copia `TikTokVault/data/tiktok_urls.example.txt` a `tiktok_urls.txt`:
+     ```bash
+     cp TikTokVault/data/tiktok_urls.example.txt TikTokVault/data/tiktok_urls.txt
+     ```
+   - Edita `TikTokVault/data/tiktok_urls.txt` y agrega tus URLs reales:
    ```
    https://www.tiktok.com/@username/video/1234567890123456789
    https://www.tiktok.com/@username/video/9876543210987654321
@@ -183,6 +186,29 @@ Después de descargar, encontrarás:
 ### Directorio de Metadatos (`TikTokVault/outputs/metadata/`)
 - **Info de video**: archivos `.info.json` con metadatos completos del video
 - **Descripciones**: Títulos de videos, descripciones, fechas de subida
+
+## 🔒 Gestión de Archivos Privados
+
+### Archivos que NO se suben al repositorio:
+- `TikTokVault/data/tiktok_urls.txt` - Tu archivo personal con URLs reales
+- `TikTokVault/outputs/videos/*` - Videos descargados
+- `TikTokVault/outputs/logs/*` - Registros personales
+- `TikTokVault/outputs/metadata/*` - Metadatos de videos
+- `TikTokVault/outputs/tiktok_videos.db` - Tu base de datos personal
+
+### Archivos que SÍ se incluyen en el repositorio:
+- `TikTokVault/data/tiktok_urls.example.txt` - Archivo de ejemplo
+- Toda la estructura de código y documentación
+- Archivos `.gitkeep` para mantener las carpetas
+
+### Para comenzar:
+```bash
+# Copia el archivo de ejemplo
+cp TikTokVault/data/tiktok_urls.example.txt TikTokVault/data/tiktok_urls.txt
+
+# Edita el archivo con tus URLs reales
+# Tus URLs personales nunca se subirán al repositorio
+```
 
 ## Ejemplos 🎯
 

@@ -1,3 +1,22 @@
+# Ignore user-specific URL files with real URLs
+TikTokVault/data/tiktok_urls.txt
+
+# But keep example files
+!TikTokVault/data/tiktok_urls.example.txt
+!TikTokVault/data/example_*.txt
+
+# Ignore downloaded content (personal files)
+TikTokVault/outputs/videos/*
+TikTokVault/outputs/metadata/*
+TikTokVault/outputs/logs/*
+TikTokVault/outputs/tiktok_videos.db
+
+# Keep directory structure
+!TikTokVault/outputs/.gitkeep
+!TikTokVault/outputs/videos/.gitkeep
+!TikTokVault/outputs/metadata/.gitkeep
+!TikTokVault/outputs/logs/.gitkeep
+
 # Python
 __pycache__/
 *.py[cod]

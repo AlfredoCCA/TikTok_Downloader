@@ -1,0 +1,31 @@
+# TikTok URLs to download
+# Add one URL per line
+# Lines starting with # are comments and will be ignored
+
+# Example URLs (these are just examples, replace with real URLs):
+# https://www.tiktok.com/@username/video/1234567890123456789
+# https://www.tiktok.com/@creator/video/9876543210987654321
+
+# Instructions:
+# 1. Copy this file to 'tiktok_urls.txt' 
+# 2. Replace the example URLs with real TikTok URLs
+# 3. Remove the # from the beginning of the URL lines
+# 4. Save the file and run the downloader
+
+# Categories you can organize:
+# Educational videos:
+# https://www.tiktok.com/@educator/video/1111111111111111111
+
+# Entertainment:
+# https://www.tiktok.com/@comedian/video/2222222222222222222
+
+# Tutorials:
+# https://www.tiktok.com/@teacher/video/3333333333333333333
+
+# News:
+# https://www.tiktok.com/@news/video/4444444444444444444
+
+# Remember:
+# - Only download videos you have permission to download
+# - Respect copyright and content creators' rights
+# - This tool is for personal use and educational purposes

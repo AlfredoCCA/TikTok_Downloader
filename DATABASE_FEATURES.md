@@ -8,8 +8,7 @@ Se ha implementado exitosamente un sistema completo de base de datos SQLite para
 
 1. **`TikTokVault/src/database.py`** - Gestor principal de base de datos
 2. **`TikTokVault/src/db_viewer.py`** - Interfaz para consultar la base de datos  
-3. **`setup_database.py`** - Script para configurar datos de prueba
-4. **`configs/database_config.ini`** - Configuración de la base de datos
+3. **`configs/database_config.ini`** - Configuración de la base de datos
 
 ### 🗄️ Estructura de la Base de Datos:
 

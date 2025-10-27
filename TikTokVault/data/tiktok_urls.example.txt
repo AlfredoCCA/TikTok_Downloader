@@ -26,6 +26,5 @@
 # https://www.tiktok.com/@news/video/4444444444444444444
 
 # Remember:
-# - Only download videos you have permission to download
 # - Respect copyright and content creators' rights
 # - This tool is for personal use and educational purposes

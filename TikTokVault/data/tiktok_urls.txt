@@ -2,33 +2,3 @@
 # Add one URL per line
 # Example:
 # https://www.tiktok.com/@username/video/1234567890123456789
-
-https://www.tiktok.com/@mileniotv/video/7517470619600948486?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@urielestradatv/video/7517863418276089089?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@latinus_us/video/7517726596128673030?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@aztecanoticias/video/7517858360411065607?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@aztecanoticias/video/7517896011344284984?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@guffo_trevino/video/7517830994074914056?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@minuto.critico.mx/video/7517851313259023622?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@adrielhz/video/7518053453894110472?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@culturacolectiva_news/video/7518110301380824336?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@jonathanlozada888/video/7518068398056623367?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@elfinancieromx_/video/7518120160557845766?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@princesagodin/video/7519349454672039176?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@elfinancieromx_/video/7519262403800943878?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@vikvazquezg/video/7520037206216723719?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@gcabogados/video/7520007746578631944?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@palominosoy/video/7520014004064996616?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@gcabogados/video/7520007746578631944?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@diavitaxadvisors/video/7520025282946927879?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@yorchbesos/video/7520278163507760391?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@vikvazquezg/video/7520400296799997191?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@camilacifuentes.co/video/7520426086342102328?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@vikvazquezg/video/7520866924088069384?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@roberx.gdl/video/7520807241956560146?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@incheckeate/video/7520666589323103494?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@abolawlex/video/7520756563728960775?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@jorgeocana/video/7520674734493781256?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@.digitax/video/7521147280158657799?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@angeles_guzman1/video/7521081420836572434?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301
-https://www.tiktok.com/@eliascontaconmigo/video/7521440156650343685?is_from_webapp=1&sender_device=pc&web_id=7519009719810295301

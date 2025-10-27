@@ -1,6 +1,91 @@
 # TikTok Downloader 🎬
 
+<div align="center">
+
+[![Version](https://img.shields.io/badge/Version-1.5.0-blue?style=for-the-badge)](https://github.com/AlfredoCCA/TikTok_Downloader/releases)
+[![Python](https://img.shields.io/badge/Python-3.8+-yellow?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-GPL%20v3-red?style=for-the-badge&logo=gnu&logoColor=white)](COPYING)
+[![Database](https://img.shields.io/badge/Database-SQLite-orange?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+
+[![GitHub Stars](https://img.shields.io/github/stars/AlfredoCCA/TikTok_Downloader?style=social)](https://github.com/AlfredoCCA/TikTok_Downloader/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/AlfredoCCA/TikTok_Downloader?style=social)](https://github.com/AlfredoCCA/TikTok_Downloader/network/members)
+[![GitHub Issues](https://img.shields.io/github/issues/AlfredoCCA/TikTok_Downloader?style=flat-square)](https://github.com/AlfredoCCA/TikTok_Downloader/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/AlfredoCCA/TikTok_Downloader?style=flat-square)](https://github.com/AlfredoCCA/TikTok_Downloader/pulls)
+
+[![Downloads](https://img.shields.io/github/downloads/AlfredoCCA/TikTok_Downloader/total?style=flat-square&color=brightgreen)](https://github.com/AlfredoCCA/TikTok_Downloader/releases)
+[![Last Commit](https://img.shields.io/github/last-commit/AlfredoCCA/TikTok_Downloader?style=flat-square&color=blue)](https://github.com/AlfredoCCA/TikTok_Downloader/commits/main)
+[![Repo Size](https://img.shields.io/github/repo-size/AlfredoCCA/TikTok_Downloader?style=flat-square&color=orange)](https://github.com/AlfredoCCA/TikTok_Downloader)
+[![Code Size](https://img.shields.io/github/languages/code-size/AlfredoCCA/TikTok_Downloader?style=flat-square&color=lightblue)](https://github.com/AlfredoCCA/TikTok_Downloader)
+
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey?style=flat-square)](https://github.com/AlfredoCCA/TikTok_Downloader)
+[![Maintained](https://img.shields.io/badge/Maintained-Yes-green?style=flat-square)](https://github.com/AlfredoCCA/TikTok_Downloader/commits/main)
+[![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square)](https://github.com/AlfredoCCA/TikTok_Downloader)
+
+[![Made with Python](https://img.shields.io/badge/Made%20with-Python-blue?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![Powered by yt-dlp](https://img.shields.io/badge/Powered%20by-yt--dlp-red?style=flat-square&logo=youtube&logoColor=white)](https://github.com/yt-dlp/yt-dlp)
+[![Data Storage](https://img.shields.io/badge/Data%20Storage-SQLite-orange?style=flat-square&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+[![CLI Interface](https://img.shields.io/badge/Interface-CLI-purple?style=flat-square&logo=terminal&logoColor=white)](https://github.com/AlfredoCCA/TikTok_Downloader)
+
+</div>
+
+---
+
 Un descargador profesional de videos de TikTok con sistema avanzado de base de datos SQLite que proporciona gestión completa de metadatos, búsqueda inteligente, y análisis detallado de contenido descargado.
+
+## 📚 Tabla de Contenido
+
+<details>
+<summary>🔍 Expandir Navegación</summary>
+
+- [🎯 Características](#características-)
+- [📁 Estructura del Proyecto](#estructura-del-proyecto-)
+- [🚀 Instalación y Configuración](#instalación-y-configuración-)
+- [📖 Uso Detallado](#uso-detallado-)
+- [🗄️ Sistema de Base de Datos](#sistema-de-base-de-datos-️)
+- [📝 Formato de Archivo de URLs](#formato-de-archivo-de-urls-)
+- [⚙️ Configuración Avanzada](#configuración-avanzada-️)
+- [📂 Archivos de Salida](#archivos-de-salida-)
+- [🔒 Gestión de Archivos y Privacidad](#-gestión-de-archivos-y-privacidad)
+- [🎯 Ejemplos Prácticos](#ejemplos-prácticos-)
+- [🔧 Solución de Problemas](#solución-de-problemas-)
+- [🤝 Contribuir al Proyecto](#contribuir-al-proyecto-)
+- [⚖️ Aviso Legal](#aviso-legal-️)
+- [🔧 Características Técnicas](#características-técnicas-)
+- [📄 Licencia](#licencia-)
+- [👏 Agradecimientos](#agradecimientos-)
+
+</details>
+
+---
+
+## ⚡ Instalación Rápida
+
+<div align="center">
+
+[![Install with pip](https://img.shields.io/badge/Install%20with-pip-blue?style=for-the-badge&logo=pypi&logoColor=white)](https://pypi.org/project/pip/)
+[![Git Clone](https://img.shields.io/badge/Git-Clone-orange?style=for-the-badge&logo=git&logoColor=white)](https://github.com/AlfredoCCA/TikTok_Downloader.git)
+[![Download ZIP](https://img.shields.io/badge/Download-ZIP-green?style=for-the-badge&logo=download&logoColor=white)](https://github.com/AlfredoCCA/TikTok_Downloader/archive/refs/heads/main.zip)
+
+</div>
+
+```bash
+# 1. Clonar repositorio
+git clone https://github.com/AlfredoCCA/TikTok_Downloader.git
+cd TikTok_Downloader
+
+# 2. Instalar dependencias
+pip install -r requirements.txt
+
+# 3. Configurar entorno
+python setup_environment.py
+
+# 4. ¡Usar!
+python run_downloader.py
+```
+
+**[📖 Ver Guía Completa de Instalación](#instalación-y-configuración-)**
+
+---
 
 ## Características ✨
 
@@ -1040,13 +1125,17 @@ CREATE TABLE download_sessions (
 
 ## Estado del Proyecto 📊
 
-### Badges de Estado
-![Última Actualización](https://img.shields.io/badge/Última%20Actualización-Octubre%202024-brightgreen)
-![Versión](https://img.shields.io/badge/Versión-1.5.0-blue)
-![Python](https://img.shields.io/badge/Python-3.8+-yellow)
-![Base de Datos](https://img.shields.io/badge/Base%20de%20Datos-SQLite-orange)
-![Licencia](https://img.shields.io/badge/Licencia-GPL%20v3-red)
-![Estado](https://img.shields.io/badge/Estado-Activo-green)
+### Badges Técnicas
+
+[![yt-dlp](https://img.shields.io/badge/yt--dlp-2023.10.13+-red?style=flat-square&logo=youtube&logoColor=white)](https://github.com/yt-dlp/yt-dlp)
+[![tqdm](https://img.shields.io/badge/tqdm-4.65.0+-blue?style=flat-square)](https://github.com/tqdm/tqdm)
+[![colorama](https://img.shields.io/badge/colorama-0.4.6+-yellow?style=flat-square)](https://github.com/tartley/colorama)
+[![requests](https://img.shields.io/badge/requests-2.31.0+-green?style=flat-square)](https://docs.python-requests.org/)
+
+[![CLI Tool](https://img.shields.io/badge/Type-CLI%20Tool-purple?style=flat-square&logo=terminal)](https://github.com/AlfredoCCA/TikTok_Downloader)
+[![Batch Processing](https://img.shields.io/badge/Feature-Batch%20Processing-orange?style=flat-square)](https://github.com/AlfredoCCA/TikTok_Downloader)
+[![Metadata](https://img.shields.io/badge/Feature-Metadata%20Extraction-lightblue?style=flat-square)](https://github.com/AlfredoCCA/TikTok_Downloader)
+[![Analytics](https://img.shields.io/badge/Feature-Analytics%20Dashboard-cyan?style=flat-square)](https://github.com/AlfredoCCA/TikTok_Downloader)
 
 ### Estadísticas de Desarrollo
 - **Líneas de Código**: ~2,000+ líneas

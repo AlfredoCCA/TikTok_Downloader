@@ -1,6 +1,7 @@
+# Importar bibliotecas
 import yt_dlp
 
-# URL del video (reemplaza con una real)
+# URL del video 
 url = "https://www.tiktok.com/@usuario/video/1234567890"
 
 # Descarga el video

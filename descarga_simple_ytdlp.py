@@ -5,8 +5,9 @@ Script simple para descargar videos con yt-dlp
 Sin interacción del usuario - solo cambiar la URL y ejecutar
 """
 
-import yt_dlp
 import os
+
+import yt_dlp
 
 # ===============================
 # CONFIGURACIÓN (CAMBIAR AQUÍ)

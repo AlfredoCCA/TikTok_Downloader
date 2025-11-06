@@ -1109,11 +1109,7 @@ CREATE TABLE download_sessions (
 - **[SQLite](https://www.sqlite.org/)** - Base de datos robusta, liviana y sin configuración
 - **[Python](https://www.python.org/)** - Lenguaje de programación poderoso y versátil
 
-#### Comunidades que Inspiran
-- **Creadores de TikTok** - Por el contenido increíble y la creatividad sin límites
-- **Comunidad Python** - Por las herramientas excepcionales y el apoyo constante
-- **Open Source Community** - Por hacer posible el desarrollo colaborativo
-- **Contributors & Users** - Por el feedback valioso, testing y mejoras continuas
+as
 
 #### Menciones Especiales
 - **Desarrolladores de yt-dlp** - Por mantener viva y actualizada la funcionalidad de descarga
@@ -1181,9 +1177,6 @@ CREATE TABLE download_sessions (
 
 ---
 
-## 🎉 ¡Gracias por Usar TikTok Downloader!
-
-**Desarrollado con ❤️ para la comunidad de TikTok**
 
 *Este proyecto se mantiene activamente y está abierto a contribuciones de la comunidad. ¡Esperamos tus ideas y mejoras!*
 
